@@ -1,0 +1,27 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: ./Backend       # Caminho para o diretório que contém o Dockerfile
+      dockerfile: Dockerfile   # Nome do Dockerfile dentro do diretório `Backend`
+    container_name: backend_container
+    ports:
+      - "3333:3333"             # Mapeia a porta do container para a máquina local
+    volumes:
+      - ./Backend:/app          # Mapeia o diretório Backend local para o diretório de trabalho no container
+      - /app/node_modules       # Evita conflitos entre node_modules local e no container
+    environment:
+      NODE_ENV: development
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile  # Especifica o Dockerfile de desenvolvimento
+    container_name: frontend_container
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app           # Mapeia o diretório `frontend` local para `/app` no container
+      - /app/node_modules          # Evita conflitos entre node_modules local e no container
+    # environment:
+      # NODE_API: "http://localhost:3333"  # URL da API do backend para a variável de ambiente do React
