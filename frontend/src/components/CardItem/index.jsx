@@ -5,12 +5,12 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-export const CardItem = ({resultado, enunciado}) => {
+export const CardItem = ({titulo, resultado, enunciado}) => {
     return (
-        <Card sx={{ width: "98%", height: "20%" }}>
+        <Card sx={{ width: "98%", height: "100vh", p: 1 }}>
             <CardContent>
                 <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 14 }}>
-                    Exercício 1
+                    {titulo}
                 </Typography>
                 <Typography variant="h5" component="div">
                     {resultado}
