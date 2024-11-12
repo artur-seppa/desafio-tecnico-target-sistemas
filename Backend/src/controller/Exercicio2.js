@@ -19,13 +19,13 @@ function isFibonacci(number) {
 
 class Exercicio2 {
     verificarFibonacci(req, res) {
-        const { numero } = req.body;
+        const numero = req.body.resposta;
 
         try {
-            if (isFibonacci(numero)) {
-                return res.json({ message: `${numero} pertence à sequência de Fibonacci.` });
+            if (isFibonacci(Number(numero))) {
+                return res.json({ message: `O valor ${numero} pertence à sequência de Fibonacci.` });
             } else {
-                return res.json({ message: `${numero} não pertence à sequência de Fibonacci.` });
+                return res.json({ message: `O valor ${numero} não pertence à sequência de Fibonacci.` });
             }
         } catch (error) {
             return res

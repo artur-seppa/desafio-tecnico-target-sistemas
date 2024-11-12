@@ -1,6 +1,7 @@
 class Exercicio5 {
     inverter(req, res) {
-        const { texto } = req.body;  // Recebe a string no corpo da requisição
+        const texto = req.body.resposta;
+        // const { texto } = req.body;  // Recebe a string no corpo da requisição
 
         if (!texto || typeof texto !== 'string') {
             return res.status(400).json({ error: 'Por favor, forneça uma string válida.' });
@@ -13,7 +14,7 @@ class Exercicio5 {
         }
 
         // Retorna a string invertida como resposta
-        return res.json({ original: texto, invertida: resultado });
+        return res.json({ message: `string invertida ${resultado}` });
     }
 }
 

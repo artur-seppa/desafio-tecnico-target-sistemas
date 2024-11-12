@@ -12,11 +12,11 @@ class Exercicio3 {
         try {
             const faturamento = lerFaturamento();
 
-            const menorFaturamento = Math.min(...faturamento.map(item => item.valor));
-            const maiorFaturamento = Math.max(...faturamento.map(item => item.valor));
+            const menorFaturamento = Math.min(...faturamento.map(item => item.valor)).toFixed(2);
+            const maiorFaturamento = Math.max(...faturamento.map(item => item.valor)).toFixed(2);
 
             const somaFaturamento = faturamento.reduce((acc, item) => acc + item.valor, 0);
-            const mediaFaturamento = somaFaturamento / faturamento.length;
+            const mediaFaturamento = (somaFaturamento / faturamento.length).toFixed(2);
 
             const diasAcimaMedia = faturamento.filter(item => item.valor > mediaFaturamento).length;
 

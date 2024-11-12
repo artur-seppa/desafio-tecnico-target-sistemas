@@ -22,6 +22,3 @@ services:
       - "3000:3000"
     volumes:
       - ./frontend:/app           # Mapeia o diretório `frontend` local para `/app` no container
-      - /app/node_modules          # Evita conflitos entre node_modules local e no container
-    # environment:
-      # NODE_API: "http://localhost:3333"  # URL da API do backend para a variável de ambiente do React

@@ -10,11 +10,7 @@ class Exercicio1 {
                 SOMA = SOMA + K;
             }
 
-            const resultado = {
-                "resultado": SOMA
-            }
-
-            return res.status(200).json({ response: SOMA });
+            return res.status(200).json({ SOMA: SOMA });
         } catch (error) {
             return res
                 .status(400)

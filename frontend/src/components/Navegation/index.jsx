@@ -4,6 +4,10 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import { motion } from 'framer-motion';
+
+import { CardItem } from '../CardItem';
+import { CardInterativo } from '../CardInterativo';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -18,7 +22,14 @@ function CustomTabPanel(props) {
     >
       {value === index && (
         <Box sx={{ p: 3, color: 'white' }}>
-          {children}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }} // Começa invisível e abaixo
+            animate={{ opacity: 1, y: 0 }} // Anima para visível e posição original
+            exit={{ opacity: 0, y: -20 }} // Anima para invisível e acima ao sair
+            transition={{ duration: 0.3 }} // Duração da animação
+          >
+            {children}
+          </motion.div>
         </Box>
       )}
     </div>
@@ -47,7 +58,6 @@ export const Navegation = () => {
 
   return (
     <Box sx={{ width: '100%', bgcolor: 'primary.main', color: 'white' }}>
-      {/* Cabeçalho com título */}
       <Box sx={{ textAlign: 'center', py: 2 }}>
         <Typography variant="h4" component="h1" sx={{ fontWeight: 'bold' }}>
           Desafio Target Sistemas
@@ -78,19 +88,19 @@ export const Navegation = () => {
       </Box>
 
       <CustomTabPanel value={value} index={0}>
-        Exercício 1
+        <CardItem titulo={"Exercicío 1"} endpoint={"ex1"} />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        Exercício 2
+        <CardInterativo titulo={"Exercicío 2"} enunciado={"Insira um número para verificar se pertence a sequência de Fibonacci."} inputType={"number"} endpoint={"ex2"} />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        Exercício 3
+        <CardItem titulo={"Exercicío 3"} endpoint={"ex3"} />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={3}>
-        Exercício 4
+        <CardItem titulo={"Exercicío 4"} endpoint={"ex4"} />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={4}>
-        Exercício 5
+        <CardInterativo titulo={"Exercicío 5"} enunciado={"Insira uma string para ver o retorno dela."} inputType={"string"} endpoint={"ex5"} />
       </CustomTabPanel>
     </Box>
   );
